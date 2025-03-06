@@ -49,8 +49,7 @@ const initApp = () => {
         return;
     }
 
-    if (files.length > 0){
-        const file = files[0];  //just in case line its uneccessary 
+    //just in case line its uneccessary 
 
         
         JSZip.loadAsync(file).then(function(zip){ //load the file into JSZip 
@@ -90,11 +89,9 @@ const initApp = () => {
         }).catch (function(err){
             console.error("error loading the zip file"); //something wrong in loading the zip
         })
-    } else{
-        console.error("please upload zip file"); //not a zip file also not neccesary we check in the start 
     } 
 }
 
-}
+
 
 document.addEventListener("DOMContentLoaded", initApp);
