@@ -89,6 +89,7 @@ const initApp = () => {
                                     userNameArr = jsonObject.relationships_following.map(user => user.string_list_data[0].value);
                                     followingArr.push(...userNameArr);
                                     console.log("Following Array:", followingArr);
+                                    checkFiles();
                                 } else {
                                     console.error("Error: relationships_following is not an array!");
                                 }
@@ -107,6 +108,7 @@ const initApp = () => {
                                 }).filter(Boolean);
                                 followersArr.push(...userNameArr);
                                 console.log("Followers Array:", followersArr);
+                                checkFiles();
                             }else {
                                 console.error("Error: followers.json structure is unexpected!", jsonObject);
                             }
@@ -131,7 +133,23 @@ const initApp = () => {
     function checkFiles(){
         filesChecks ++;
         if (filesChecks == 2){
+            processFollowingData();
 
+        }
+    }
+
+    function processFollowingData(){
+        for(let i = 0; i < followingArr.length; i++){
+            
+            if (!followersArr.includes(followingArr[i])){
+                console.log(followingArr[i]);
+            }
+        }
+
+        for(let i = 0; i < followersArr.length; i++){
+            if (!followingArr.includes(followersArr[i])){
+                console.log(followersArr[i]);
+            }
         }
     }
 }
