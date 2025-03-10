@@ -30,7 +30,9 @@ const initApp = () => {
     droparea.addEventListener('drop', handleDrop) //listen for drop and then run the handle drop function
     
     
-    
+    let filesChecks = 0;
+    let followersArr = [];
+    let followingArr = [];
     
     function handleDrop(event) {
     event.preventDefault(); //prevent default just in case 
@@ -69,8 +71,7 @@ const initApp = () => {
                 });
             });
 
-            const followersArr = [];
-            const followingArr = [];
+
             requiredfiles.forEach(fileName =>{  
                 if(foundFiles[fileName]){
                     zip.files[foundFiles[fileName]].async('text').then(function(content){ //load the foundfiles and read it as text
@@ -124,6 +125,15 @@ const initApp = () => {
             console.error("error loading the zip file"); //something wrong in loading the zip
         })
     } 
+
+    
+
+    function checkFiles(){
+        filesChecks ++;
+        if (filesChecks == 2){
+
+        }
+    }
 }
 
 
