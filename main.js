@@ -93,17 +93,21 @@ const initApp = () => {
                                 }
                             }
                             
-                            if (jsonObject.relationships_followers) {
+                            if (Array.isArray(jsonObject)) {
                                 console.log("Found followers.json, processing data...");
-                                console.log("RAW followers JSON:", jsonObject.relationships_followers);
-                                
-                                if (Array.isArray(jsonObject.relationships_followers)) {
-                                    userNameArr = jsonObject.relationships_followers.map(user => user.string_list_data[0].value);
-                                    followersArr.push(...userNameArr);
-                                    console.log("Followers Array:", followersArr);
-                                } else {
-                                    console.error("Error: relationships_followers is not an array!");
-                                }
+                                userNameArr = jsonObject.map( user => {
+                                    if(user.string_list_data && user.string_list_data[0]){
+                                        return user.string_list_data[0].value;
+                                    }
+                                    else{
+                                        console.error("Unexpected structure in followers.json", user);
+                                        return null;
+                                    }
+                                }).filter(Boolean);
+                                followersArr.push(...userNameArr);
+                                console.log("Followers Array:", followersArr);
+                            }else {
+                                console.error("Error: followers.json structure is unexpected!", jsonObject);
                             }
                         }
                         catch (err) {
