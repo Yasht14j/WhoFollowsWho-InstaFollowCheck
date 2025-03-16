@@ -61,12 +61,29 @@ h1{
 }
 
 
-div {
-    min-height: 300px;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    grid-template-rows: 100px 100px 100px;
-    grid-auto-rows: minmax(100px, auto);
+.follow {
+    margin: 1rem;
+    padding: 2rem 2rem;
+    text-align: center;
 }
+
+.box{
+    display: inline-block;
+    border: 1px solid orangered;
+    padding: 2rem 2rem;
+    vertical-align: middle;
+    
+}
+
+.box:first-child{
+    margin-right: 100px;
+    background-color: rgba(0, 0, 0, 0.203);
+}
+
+.box:last-child{
+    margin-left: 100px;
+    background-color: rgba(0, 0, 0, 0.203);
+}
+
+
 
