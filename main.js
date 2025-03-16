@@ -139,18 +139,37 @@ const initApp = () => {
     }
 
     function processFollowingData(){
+
+        let displayF = document.getElementById("fans");
+        let displayC = document.getElementById("hollywood");
+
+        let fans = [];
+        fans = new Array();
+
+        let celebrities = [];
+        celebrities = new Array;
+
         for(let i = 0; i < followingArr.length; i++){
             
             if (!followersArr.includes(followingArr[i])){
                 console.log(followingArr[i]);
+                celebrities.push(followingArr[i]);
             }
         }
 
         for(let i = 0; i < followersArr.length; i++){
             if (!followingArr.includes(followersArr[i])){
                 console.log(followersArr[i]);
+                fans.push(followersArr[i]);
             }
         }
+        displayF.textContent = fans.join("\n");
+        displayC.textContent = celebrities.join("\n");
+
+        displayC.style.whiteSpace = "pre-line";
+        displayF.style.whiteSpace = "pre-line";
+
+        
     }
 }
 
