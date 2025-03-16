@@ -163,11 +163,15 @@ const initApp = () => {
                 fans.push(followersArr[i]);
             }
         }
+        fans.unshift("people that you dont follow back \n");
+        celebrities.unshift("people that dont follow you back \n");
         displayF.textContent = fans.join("\n");
         displayC.textContent = celebrities.join("\n");
 
         displayC.style.whiteSpace = "pre-line";
         displayF.style.whiteSpace = "pre-line";
+
+        
 
         
     }
