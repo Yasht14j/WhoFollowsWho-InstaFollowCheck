@@ -70,9 +70,9 @@ h1{
 .box{
     display: inline-block;
     border: 1px solid orangered;
-    padding: 2rem 2rem;
+    padding: 1rem;
     vertical-align: top;
-    
+    align-items: middle;
     
 }
 
